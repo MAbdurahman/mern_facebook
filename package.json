@@ -6,6 +6,21 @@
   "repository": "https://github.com/MAbdurahman/mern_facebook.git",
   "author": "Mahdi Abdurrahman <mdbdrrhm@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "react",
+    "node"
+  ],
+  "nodemonConfig": {
+    "delay": "2000"
+  },
   "devDependencies": {
     "concurrently": "^7.1.0"
   },
