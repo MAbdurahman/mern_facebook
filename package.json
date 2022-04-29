@@ -1,0 +1,9 @@
+{
+  "name": "mern_facebook",
+  "version": "1.0.0",
+  "description": "implementation of Facebook clone utilizing MERN stack",
+  "main": "server.js",
+  "repository": "https://github.com/MAbdurahman/mern_facebook.git",
+  "author": "Mahdi Abdurrahman <mdbdrrhm@gmail.com>",
+  "license": "MIT"
+}
