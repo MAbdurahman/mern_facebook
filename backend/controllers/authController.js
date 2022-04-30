@@ -1,10 +1,11 @@
+const User = require('../models/userModel');
+const bcrypt = require('bcrypt');
 const {
 	validateEmail,
 	validateLength,
 	validateUsername,
 } = require('../helpers/validationHelper');
-const User = require('../models/userModel');
-const bcrypt = require('bcrypt');
+const { generateToken } = require('../utils/generateTokenUtils');
 
 exports.register = async (req, res) => {
 	try {
@@ -46,9 +47,10 @@ exports.register = async (req, res) => {
 				message: 'Password must be between 8 and 32 characters.',
 			});
 		}
-      const encryptedPassword = await bcrypt.hash(password, 12);
+		const encryptedPassword = await bcrypt.hash(password, 12);
 		let tempUsername = first_name + last_name;
 		const newUsername = await validateUsername(tempUsername);
+
 
 		const user = await new User({
 			first_name,
@@ -61,6 +63,12 @@ exports.register = async (req, res) => {
 			bDay,
 			gender,
 		}).save();
+
+      const emailVerificationToken = generateToken(
+			{ id: user._id.toString() },
+			'30m'
+		);
+		console.log(emailVerificationToken);
 
 		res.json({
 			status: 'success',
