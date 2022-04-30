@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 	next();
 });
 //**************** import all routes ****************//
-
+const userRoutes = require('./../routes/userRoutes')
 
 //**************** app routes ****************//
 app.get('/api/v1', (req, res) => {
@@ -31,6 +31,7 @@ app.get('/api/v1', (req, res) => {
 		message: 'Welcome to MERN Facebook!',
 	});
 });
+app.use('/api/v1/users', userRoutes);
 
 app.all('*', (req, res, next) => {
 	next(
