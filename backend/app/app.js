@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 //**************** app routes ****************//
 app.get('/api/v1', (req, res) => {
 	res.status(200).json({
-		requestAt: req.requestTime,
+		requestedAt: req.requestTime,
 		app: 'mern_facebook',
 		message: 'Welcome to MERN Facebook!',
 	});
